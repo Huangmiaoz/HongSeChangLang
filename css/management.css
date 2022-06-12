@@ -1,0 +1,38 @@
+.container {
+    width: 1240px;
+    margin: 0 auto;
+}
+.container {
+    height: 52px;
+    background-color: #8cceff;
+}
+
+.management-nav .container {
+    height: 52px;
+}
+
+.management-nav {
+    height: 50px;
+    padding-top: 2px;
+    padding-left: 2px;
+    /* ps */
+}
+.management-nav a {
+    color: #FFFFFF;
+}
+.management-nav li {
+    float: left;
+    margin-right: 48px;
+    line-height: 70px;
+}
+
+.management-nav li:last-child {
+    margin-right: 84px;
+}
+
+.management-nav li a:hover{
+    padding-bottom: 7px;
+    border-bottom: 1px solid #ffffff;
+    /* border-bottom: 1px solid #ec1f1f; */
+    color: #ffffff;
+}

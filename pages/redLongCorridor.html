@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../plugins/elementui/index.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <style>
+        .block{
+            position: relative;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-0%);
+        }
+
+    </style>
+</head>
+<body>
+<!-- 网页头部模块 -->
+ <div id="app">
+     <header>
+         <!-- 快捷菜单模块 -->
+         <div class="xtx-shortcut">
+             <nav class="container">
+                 <ul class="fr">
+                     <li><a href="#">个人中心</a>|</li>
+                     <li><a href="#">帮助中心</a>|</li>
+                     <li><a href="#">在线客服</a>|</li>
+                     <li><a href="#" class="mobile">手机版</a></li>
+                     <li>|<a href="#" @click="userInfoDialogVisible = true"> 用户名：{{username}} </a></li>
+<!--                     <li>|<a href="javascript:;" @click="logout"> 注销 </a></li>-->
+                     <li>|
+                         <a  v-if="userId" href="javascript:;" @click="logout"> 注销 </a>
+                         <a v-else href="login.html"> 登录 </a>
+                     </li>
+                 </ul>
+             </nav>
+         </div>
+         <!-- 主导航模块 -->
+         <div class="xtx-main-nav container">
+             <!-- 中间的导航 -->
+             <nav class="fl">
+                 <ul>
+                     <li><a href="index.html">首页</a></li>
+                     <li><a href="redLongCorridor.html" class="active">红色长廊一览</a></li>
+                     <li><a href="question.html">趣味答题</a></li>
+                 </ul>
+             </nav>
+         </div>
+     </header>
+
+     <div  class="block" style="width: 75%">
+         <h1>回望历史</h1>
+         <el-timeline v-for="item in list" :key="item.thingId">
+             <el-timeline-item :timestamp= "item.thingTime" placement="top">
+                 <el-card>
+                     <h1>{{item.thingName}}</h1>
+                     <p>{{item.tingDescription}}</p>
+                 </el-card>
+             </el-timeline-item>
+         </el-timeline>
+     </div>
+
+     <el-dialog
+             title="当前登录用户信息"
+             :visible.sync="userInfoDialogVisible"
+             width="30%">
+         <span  v-if="userId">用户id：{{userId}}</span>
+         <br><br>
+         <span  v-if="userId">用户名：{{username}}</span>
+         <h1  v-if="!userId">请先登录！</h1>
+         <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="userInfoDialogVisible = false">关闭</el-button>
+      </span>
+
+     </el-dialog>
+ </div>
+
+<!-- 网页底部模块 -->
+<footer>
+    <!-- 版权信息 -->
+    <section class="xtx-copyright">
+        <p>CopyRight @ 网络201 黄颖瑜</p>
+    </section>
+</footer>
+
+
+
+
+<script src="../js/vue.js"></script>
+<script src="../plugins/elementui/index.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            list :[],
+           userLoginInfo: {
+               userId: null,
+               username: null
+            },
+            userInfoDialogVisible :false
+        },
+        created() {
+            console.log('hello')
+            this.initThing();
+            this.userId = sessionStorage.getItem("userId");
+            this.username = sessionStorage.getItem("username");
+            if(!this.userId) {
+                this.username = '未登录';
+            }
+        },
+        methods: {
+            initThing() {
+                axios.get("http://localhost:8082/thing").then((res) => {
+                    console.log(res);
+                    this.list = res.data.data;
+                    console.log(this.list);
+                })
+            },
+            logout() {
+                console.log("www");
+                this.userId = null;
+                this.username = null;
+                sessionStorage.removeItem("userId");
+                sessionStorage.removeItem("username");
+            }
+        }
+    })
+</script>
+</body>
+</html>

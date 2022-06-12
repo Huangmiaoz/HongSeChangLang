@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎注册</title>
+    <link href="../css/register.css" rel="stylesheet">
+    <link rel="stylesheet" href="../plugins/elementui/index.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="app">
+        <div class="form-div">
+            <div class="reg-content">
+                <h1>欢迎注册</h1>
+                <span>已有帐号？</span> <a href="login.html">登录</a>
+            </div>
+            <form id="reg-form" ref="dataLoginForm" :model="userRegisterInfo">
+                <table>
+                    <tr>
+                        <td>用户名</td>
+                        <td class="inputs">
+                            <input name="userName" type="text" id="userName" v-model="userRegisterInfo.userName">
+                            <br>
+                            <span id="username_err" class="err_msg" :style="{display: usernameStatus}">用户名已存在</span>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>密码</td>
+                        <td class="inputs">
+                            <input name="userPassword" type="password" id="userPassword" v-model="userRegisterInfo.userPassword">
+                            <br>
+                            <span id="password_err" class="err_msg" :style="{display: passwordStatus}">密码不能为空</span>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <div class="buttons">
+                    <input value="注 册" type="button" id="reg_btn" @click="register">
+                </div>
+                <br class="clear">
+            </form>
+
+        </div>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script src="../plugins/elementui/index.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script>
+
+    axios.defaults.baseUrl = 'http://localhost:8082'
+    var app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                userRegisterInfo:{
+                    userName: "",
+                    userPassword: ""
+                },
+                usernameStatus : 'none',
+                passwordStatus : 'none'
+            }
+        },
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+            //调用查询全部数据的操作
+            console.log("hello Register!");
+
+        },
+        methods: {
+            register() {
+                // console.log(this.userRegisterInfo);
+                // console.log("username, userpassword")
+                // console.log(this.userRegisterInfo.userName);
+                // console.log(this.userRegisterInfo.userPassword);
+                axios.post("http://localhost:8082/user/create", this.userRegisterInfo).then((res) => {
+                    console.log("hello" + this.userRegisterInfo.userName);
+                    console.log(res)
+                    if(res.data.code === 200) {
+                        this.$message.success("注册成功:" + res.data.msg);
+                        // 跳转页面
+                        window.location.href='login.html';
+                    } else {
+                        this.usernameStatus = null;
+                        this.passwordStatus = null;
+                        this.$message.error("注册失败："+ res.data.msg);
+                    }
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>

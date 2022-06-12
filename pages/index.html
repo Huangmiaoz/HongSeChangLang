@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>广州大学学生党史学习网站</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+  <link rel="stylesheet" href="../plugins/elementui/index.css">
+  <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+
+  <script src="../js/animate.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+<!-- 网页头部模块 -->
+<div id="app">
+    <!-- 快捷菜单模块 -->
+    <header>
+    <div class="xtx-shortcut">
+      <nav class="container">
+        <ul class="fr">
+          <li><a href="#">个人中心</a>|</li>
+          <li><a href="#">帮助中心</a>|</li>
+          <li><a href="#">在线客服</a>|</li>
+          <li><a href="#" class="mobile">手机版</a></li>
+          <li>|<a href="#" @click="userInfoDialogVisible = true"> 用户名：{{username}} </a></li>
+          <li>|
+            <a  v-if="userId" href="javascript:;" @click="logout"> 注销 </a>
+            <a v-else href="login.html"> 登录 </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+
+    <!-- 主导航模块 -->
+    <div class="xtx-main-nav container">
+      <!-- 中间的导航 -->
+      <nav class="fl">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="redLongCorridor.html" class="active">红色长廊一览</a></li>
+          <li><a href="question.html">趣味答题</a></li>
+        </ul>
+      </nav>
+
+      <!-- 右侧的搜索 -->
+      <div class="search fl">
+        <input type="search" placeholder="搜一搜">
+      </div>
+    </div>
+</header>
+
+<!-- 网站入口：焦点图和 -->
+<div class="container xtx-entry">
+  <div class="focus">
+    <!-- 左侧按钮 -->
+    <a href="javascript:;" class="arrow-l">
+      &lt;
+    </a>
+    <!-- 右侧按钮 -->
+    <a href="javascript:;" class="arrow-r"> &gt </a>
+
+    <!-- 核心的滚动区域 -->
+    <ul>
+      <li><a href="#"><img src="../uploads/banner_1.png" alt=""></a></li>
+      <li><a href="#"><img src="../uploads/banner_2.png" alt=""></a></li>
+      <li><a href="#"><img src="../uploads/banner_3.png" alt=""></a></li>
+      <li><a href="#"><img src="../uploads/banner_4.png" alt=""></a></li>
+      <!-- <li><a href="#"><img src="./uploads/banner_1.png" alt=""></a></li> -->
+    </ul>
+    <!-- 小圆圈 -->
+    <ol class="circle">
+
+    </ol>
+  </div>
+
+  <!-- 新闻分栏 -->
+  <div class="container news-topics">
+    <div class="books-hd">
+      <h2>纪念与回忆</h2>
+      <a href="#" class="more">查看全部</a>
+    </div>
+    <div class="news">
+      <ul>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>伟大的中国革命锻造崇高的大别山精神</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>大别山精神：赓续红色血脉 逐梦新的征程</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>伟大转折开启历史新时期</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>中共湘区执行委员会：中国共产党最早成立的省级区委</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>“红手印”见证中国改革的一声惊雷</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>《新湖南报》创刊：从烽火中走来的“湖南日记”</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>高邮战役:中国抗日战争最后一役</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>在香山 重温赶考初心</a></li>
+        <li><a href="articleDetail.html?articleId=1"><span>[2021年03月24日]</span>平江惨案：“亲者痛仇者快”的历史悲剧</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 党史微课 -->
+  <div class="history container">
+    <div class="history-hd">
+      <h2>党史微课</h2>
+      <a href="#" class="more">查看更多＋</a>
+    </div>
+    <ul class="history-list">
+      <li>
+        <a href="http://dangshi.people.com.cn/n1/2020/1230/c85037-31984106.html">
+          <img src="../uploads/weike1.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="http://dangshi.people.com.cn/n1/2021/0105/c85037-31989609.html">
+          <img src="../uploads/weike2.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="http://dangshi.people.com.cn/n1/2020/1004/c85037-31883053.html">
+          <img src="../uploads/weike3.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="http://dangshi.people.com.cn/n1/2020/0903/c85037-31847997.html">
+          <img src="../uploads/weike4.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="http://dangshi.people.com.cn/n1/2020/1001/c85037-31881875.html">
+          <img src="../uploads/weike5.jpg" alt="">
+        </a>
+      </li>
+      <li>
+        <a href="http://dangshi.people.com.cn/n1/2020/0903/c85037-31848367.html">
+          <img src="../uploads/weike6.jpg" alt="">
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- 群书博览 -->
+  <div class="books container">
+    <div class="books-hd">
+      <h2>群书博览</h2>
+      <a href="#" class="more">查看全部</a>
+    </div>
+    <div class="books-content">
+      <div class="goods-pic fl">
+
+        <!-- 书目推荐 -->
+        <div class="books-list fr">
+          <ul>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/430488/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book1.png" alt="">
+                </div>
+                <div class="info">
+                  <h3>《细节的力量：新中国的伟大实践》</h3>
+                </div>
+                <div class="find">
+                  <p>通过新中国历史上的“大事件”中的“小细节”，以宏大视野全景呈现新中国70年波澜壮阔的伟大实践</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/428317/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book2.jpg" alt="">
+                </div>
+                <div class="info">
+                  <h3>《诞生--共和国孕育的十个月》</h3>
+                </div>
+                <!-- 找相似 -->
+                <div class="find">
+                  <p>以丰富的史料和独到的眼光串联起新中国从萌芽、发育到成型、诞生的快马加鞭历程</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/373815/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book3.jpg" alt="">
+                </div>
+                <div class="info">
+                  <h3>《魅力周恩来》</h3>
+                </div>
+                <!-- 找相似 -->
+                <div class="find">
+                  <p>周恩来一生至情至性、至高至圣、大智大勇、鞠躬尽瘁</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/426298/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book4.jpg" alt="">
+                </div>
+                <div class="info">
+                  <h3>《我的伯父伯母周恩来邓颖超》</h3>
+                </div>
+                <!-- 找相似 -->
+                <div class="find">
+                  <p> 作者的记述从12岁见伯父伯母开始，以亲人的独特视角，饱含深情地回顾了周恩来、邓颖超工作生活的诸多细节</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/418874/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book5.jpg" alt="">
+                </div>
+                <div class="info">
+                  <h3>《周恩来：永远的榜样》</h3>
+                </div>
+                <!-- 找相似 -->
+                <div class="find">
+                  <p>敬爱的周恩来总理，我国领袖人物中的卓越代表</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/414597/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book6.jpg" alt="">
+                </div>
+                <div class="info">
+                  <h3>《党代会历史细节 从一大到十八大》</h3>
+                </div>
+                <!-- 找相似 -->
+                <div class="find">
+                  <p>党代会是党的发展进程中标志性的事件，是党的历史的重要节点。回顾党代会的历史，也是从一个特定的角度回顾党的历史。</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/406330/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book7.jpg" alt="">
+                </div>
+                <div class="info">
+                  <h3>《长征记》</h3>
+                </div>
+                <!-- 找相似 -->
+                <div class="find">
+                  <p>以恢弘的气魄和生动的笔触，高屋建瓴地全面观照了举世闻名的长征的整体过程</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="http://dangshi.people.com.cn/GB/146570/389532/index.html">
+                <div class="img-box">
+                  <img src="../uploads/book8.jpg" alt="">
+                </div>
+                <div class="info">
+                  <h3>《我的父亲毛泽东》</h3>
+                </div>
+                <!-- 找相似 -->
+                <div class="find">
+                  <p>打破既往刻板形象，力图在宏大历史叙事之外，还原一个真实可亲的毛泽东，直击伟人政治生涯背后的内心世界</p>
+                  <p>查看更多 ></p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- 最新专题 -->
+    <div class="xtx-topics">
+      <div class="container">
+        <div class="goods-hd">
+          <h2>最新研讨</h2>
+          <a href="#" class="more">查看全部</a>
+        </div>
+        <ul class="goods-list">
+          <li>
+            <a href="#">
+              <div class="box">
+                <div class="info">
+                  <h3>爱国情 强国志 报国行</h3>
+                </div>
+              </div>
+            </a>
+            <div class="social">
+              <span class="like"> 1220</span>
+              <span class="view"> 1800</span>
+              <span class="reply"> 246</span>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              <div class="box">
+                <div class="info">
+                  <h3>Ta改变了我</h3>
+                </div>
+              </div>
+            </a>
+            <div class="social">
+              <span class="like"> 1220</span>
+              <span class="view"> 1800</span>
+              <span class="reply"> 246</span>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              <div class="box">
+                <div class="info">
+                  <h3>过年</h3>
+                </div>
+              </div>
+            </a>
+            <div class="social">
+              <span class="like"> 1220</span>
+              <span class="view"> 1800</span>
+              <span class="reply"> 246</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- 网页底部模块 -->
+    <footer>
+      <!-- 版权信息 -->
+      <section class="xtx-copyright">
+        <p>CopyRight @ 网络201 黄颖瑜</p>
+      </section>
+    </footer>
+  </div>
+  </div>
+
+  <el-dialog
+          title="当前登录用户信息"
+          :visible.sync="userInfoDialogVisible"
+          width="30%">
+    <span  v-if="userId">用户id：{{userId}}</span>
+    <br><br>
+    <span  v-if="userId">用户名：{{username}}</span>
+    <h1  v-if="!userId">请先登录！</h1>
+    <span slot="footer" class="dialog-footer">
+              <el-button type="primary" @click="userInfoDialogVisible = false">关闭</el-button>
+    </span>
+
+  </el-dialog>
+</div>
+</body>
+<script src="../js/vue.js"></script>
+<script src="../plugins/elementui/index.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data() {
+      return {
+        userLoginInfo: {
+          userId: null,
+          username: '未登录'
+        },
+        userInfoDialogVisible : false
+      }
+    },
+    //钩子函数，VUE对象初始化完成后自动执行
+    created() {
+      //调用查询全部数据的操作
+      console.log("hello index.vue!");
+      this.userId = sessionStorage.getItem("userId");
+      this.username = sessionStorage.getItem("username");
+      if(!this.userId) {
+        this.username = '未登录';
+      }
+    },
+    methods: {
+      //重置表单
+      logout() {
+        this.userId = null;
+        this.username = null;
+        sessionStorage.removeItem("userId");
+        sessionStorage.removeItem("username");
+      },
+      clickUser() {
+        this.userInfoDialogVisible = true;
+        console.log('click')
+      }
+    }
+  });
+</script>
+</html>

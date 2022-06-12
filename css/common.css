@@ -1,0 +1,116 @@
+/* 版心 */
+.container {
+  width: 1240px;
+  margin: 0 auto;
+}
+/* ---------------------------xtx-shortcut部分的样式 */
+.xtx-shortcut {
+  height: 52px;
+  background-color: #ca2f1a;
+}
+
+.xtx-shortcut .container {
+  height: 52px;
+  /* ps */
+  /* background-color: pink; */
+}
+
+.xtx-shortcut .container li {
+  float: left;
+  line-height: 52px;
+  color: #fff;
+}
+
+.xtx-shortcut .container a {
+  margin: 0 16px ;
+  color: #fff;
+  font-size: 14px;
+}
+
+.xtx-shortcut a:hover {
+  text-decoration: underline;
+}
+
+
+.xtx-shortcut li:last-child a {
+  margin-right: 0;
+}
+
+.xtx-shortcut .mobile::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 20px;
+  margin-right: 6px;
+  background: url('../images/sprites.png') -160px -70px;
+  vertical-align: middle;
+}
+
+/* ------------------------xtx-main-nav的样式 */
+.xtx-main-nav {
+  height: 50px;
+  padding-top: 2px;
+  padding-left: 2px;
+  /* ps */
+}
+
+.xtx-main-nav li {
+  float: left;
+  margin-right: 48px;
+  line-height: 70px;
+}
+
+.xtx-main-nav li:last-child {
+  margin-right: 84px;
+}
+
+.xtx-main-nav li a:hover {
+  padding-bottom: 7px;
+  /* border-bottom: 1px solid #ec1f1f; */
+  color: #ec1f1f;
+}
+
+.xtx-main-nav .search {
+  position: relative;
+  width: 172px;
+  height: 31px;
+  margin-top: 23px;
+  /* ps */
+  /* background-color: pink; */
+}
+
+.xtx-main-nav .search::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  background: url('../images/sprites.png') -79px -69px;
+}
+
+.xtx-main-nav .search input {
+  width: 172px;
+  height: 30px;
+  border-bottom: 2px solid #e7e7e7;
+  padding-left: 31px;
+}
+
+.xtx-main-nav .fl .active{
+  border-bottom: 1px solid #ec1f1f;
+  color: #ec1f1f;
+}
+
+/* -----------------------------xtx-copyright的样式 */
+.xtx-copyright {
+  height: 80px;
+  padding-top: 41px;
+  /* 自动内减 */
+  box-sizing: border-box;
+  background-color: #ca2f1a;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+}
+

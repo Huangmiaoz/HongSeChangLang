@@ -1,0 +1,473 @@
+/* -------------------------------entry的样式 */
+.xtx-entry {
+  height: 721px;
+  /* background-color: pink; */
+}
+
+.xtx-entry .container {
+  position: relative;
+  height: 644px;
+  width: 100%;
+  /* ps */
+  /* background-color: rebeccapurple; */
+}
+
+
+/* ---------------------banner的样式 */
+.focus {
+  position: relative;
+  width: 1024px;
+  height: 644px;
+  /* background-color: purple; */
+  overflow: hidden;
+  margin-left: 100px;
+}
+
+.focus ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%;
+}
+
+.focus ul li {
+  float: left;
+}
+
+.arrow-l,
+.arrow-r {
+  display: none;
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  width: 24px;
+  height: 40px;
+  background: rgba(0, 0, 0, .3);
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-family: 'icomoon';
+  font-size: 18px;
+  z-index: 2;
+}
+
+.arrow-r {
+  right: 0;
+}
+
+.circle {
+  position: absolute;
+  bottom: 10px;
+  left: 50px;
+}
+
+.circle li {
+  float: left;
+  width: 8px;
+  height: 8px;
+  /*background-color: #fff;*/
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  margin: 0 3px;
+  border-radius: 50%;
+  /*鼠标经过显示小手*/
+  cursor: pointer;
+}
+
+.current {
+  background-color: #fff;
+}
+/*----------党史微课的样式------------*/
+/* 标题 */
+.history .history-hd {
+  height: 114px;
+  line-height: 114px;
+}
+
+.history .history-hd h2 {
+  float: left;
+  height: 114px;
+  font-size: 29px;
+  font-weight: 400;
+  color: rgb(204, 51, 51);
+}
+
+.history .history-hd .more {
+  float: right;
+  color: #999;
+}
+
+.history .history-hd  .more::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  margin-left: 13px;
+  background: url('../images/sprites.png') 0px -111px;
+}
+
+/* 党课具体内容 */
+.history .history-list li {
+  position: relative;
+  top: 0;
+  float: left;
+  width: 350px;
+  height: 235px;
+  margin-right: 8px;
+  /* 过渡 */
+  transition: top .3s , box-shadow .3s;
+}
+
+.history .history-list li:hover {
+  top: -3px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.2);
+}
+
+.history .history-list li:first-child,
+.history .history-list li:nth-child(4) {
+  margin-left: 75px;
+}
+
+.history .history-list li:last-child {
+  margin-right: 0;
+}
+
+.history .history-list img {
+  width: 100%;
+}
+
+/* ------------------------book的样式 */
+.books {
+  height: 706px;
+  /* ps */
+  /* background-color: pink; */
+}
+
+.news-topics .books-hd ,
+.books .books-hd {
+  height: 96px;
+  line-height: 96px;
+  /* ps */
+  /* background-color: skyblue; */
+  /* 精准布局 */
+}
+
+.xtx-topics .goods-hd h2,
+.news-topics .books-hd h2
+,.books .books-hd h2 {
+  float: left;
+  height: 96px;
+  font-size: 29px;
+  font-weight: 400;
+  color: rgb(204, 51, 51);
+}
+
+.news-topics .books-hd .more,
+.books .books-hd .more {
+  float: right;
+  color: #999;
+}
+
+.news-topics .books-hd .more::after,
+.books .books-hd .more::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  margin-left: 13px;
+  background: url('../images/sprites.png') 0px -111px;
+}
+
+
+.books .books-content {
+  height: 617px;
+  /* ps */
+  /* background-color: cyan; */
+}
+
+.books .books-pic {
+  width: 240px;
+  height: 610px;
+  /* ps */
+  /* background-color: yellow; */
+}
+
+.books .books-pic img {
+  width: 100%;
+  height: 100%;
+}
+
+.books .books-list {
+  width: 1000px;
+  height: 610px;
+  /* ps */
+  /* background-color: green; */
+}
+
+.books .books-list li {
+  /* 父相 */
+  position: relative;
+  float: left;
+  width: 242px;
+  height: 304px;
+  border: 2px solid transparent;
+  /* 自动内减 */
+  box-sizing: border-box;
+  margin-left: 8px;
+  margin-bottom: 3px;
+  /* ps */
+  /* background-color: orange; */
+  /* 溢出隐藏 */
+  overflow: hidden;
+  /* 过渡 */
+  /* transition: border-color .3s; */
+}
+
+.books .books-list .img-box {
+  height: 204px;
+  /* ps */
+  /* background-color: yellow; */
+  text-align: center;
+}
+
+.books .img-box img {
+  width: 184px;
+  height: 184px;
+  margin-top: 8px;
+}
+
+.books .info {
+  padding-left: 29px;
+  padding-right: 47px;
+  line-height: 1.2;
+}
+
+.books .info h3 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+
+.books .books-list .find {
+  position: absolute;
+  left: 0;
+  bottom: -120px;
+  /* 开发中的辅助设置 */
+  /* top: 0; */
+  width: 242px;
+  height: 120px;
+  background-color: rgb(204, 51, 51);
+  line-height: 1;
+  text-align: center;
+  color: #fff;
+  /* 过渡 */
+  transition: bottom .3s;
+}
+
+.books .books-list li:hover {
+  border-color: rgb(204, 51, 51);;
+}
+
+.books .books-list li:hover .find {
+  bottom: 0;
+}
+
+.books .find p:nth-child(1) {
+  width: 125px;
+  border-bottom: 1px solid white;
+  padding-bottom: 7px;
+  margin: 19px auto 0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.books .find p:nth-child(2) {
+  margin-top: 8px;
+  font-size: 13px;
+}
+/* 排行榜 */
+
+
+/* ----------topics的样式-------------- */
+.xtx-topics {
+  height: 512px;
+  margin-top: 53px;
+  /* background-color: #f5f5f5; */
+}
+
+.xtx-topics .container {
+  height: 512px;
+  /* ps */
+  /* background-color: pink; */
+}
+
+.xtx-topics .goods-hd {
+  height: 115px;
+  /* ps */
+  /* background-color: orange; */
+  line-height: 115px;
+}
+
+.xtx-topics .goods-hd h2 {
+  float: left;
+  font-size: 29px;
+  font-weight: 400;
+}
+
+.xtx-topics .goods-hd .more {
+  float: right;
+  color: #999;
+}
+
+.xtx-topics .goods-hd .more::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 11px;
+  margin-left: 13px;
+  background: url('../images/sprites.png') 0px -111px;
+}
+
+.xtx-topics .goods-list li {
+  float: left;
+  width: 404px;
+  height: 356px;
+  margin-right: 13px;
+  background-color: #fff;
+}
+
+.xtx-topics .goods-list li:last-child {
+  margin-right: 0;
+}
+
+.xtx-topics li:nth-child(1) .box {
+  position: relative;
+  height: 288px;
+  /* ps */
+  /* background-color: skyblue; */
+  background: url('https://boot-img.xuexi.cn/lego/image/1570_sider-impress-slider/7336e18ee4ba4488bc314671aacde885.jpg');
+  background-size: 100% 100%;
+}
+
+.xtx-topics li:nth-child(2) .box {
+  position: relative;
+  height: 288px;
+  background: url('https://boot-img.xuexi.cn/lego/image/1570_sider-impress-slider/1a4ddf8a2eb64889826407afb8df147f.png');
+  background-size: 100% 100%;
+}
+
+.xtx-topics li:nth-child(3) .box {
+  position: relative;
+  height: 288px;
+  background: url('https://boot-img.xuexi.cn/lego/image/1570_sider-impress-slider/7ed7406cfbb2441bb8b9c148dc501ecf.png');
+  background-size: 100% 100%;
+}
+
+.xtx-topics .goods-list .box::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background-color: rgba(0,0,0,.3); */
+  /* 拓展：线性渐变 */
+  background-image: linear-gradient( to top,rgba(0,0,0,.8) , transparent 50%);
+}
+
+.xtx-topics .goods-list .info {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  padding-left: 14px;
+  /* 自动内减 */
+  box-sizing: border-box;
+  /* ps */
+  /* background-color: orange; */
+}
+
+.xtx-topics .info h3 {
+  height: 33px;
+  color: #fff;
+  font-weight: 400;
+}
+
+.xtx-topics .social {
+  height: 67px;
+  /* ps */
+  /* background-color: orange; */
+  font-size: 14px;
+  line-height: 67px;
+}
+
+
+.xtx-topics .social span:nth-child(1) {
+  margin-left: 17px;
+}
+
+.xtx-topics .social span:nth-child(2) {
+  margin-left: 24px;
+}
+
+.xtx-topics .social span:nth-child(3) {
+  float: right;
+  margin-right: 18px;
+}
+
+.xtx-topics .social span::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: red;
+  background: url('../images/sprites.png');
+  vertical-align: middle;
+}
+
+.xtx-topics .social span:nth-child(1)::before {
+  background-position: -119px -109px;
+}
+
+.xtx-topics .social span:nth-child(2)::before {
+  background-position: -159px -109px;
+}
+
+.xtx-topics .social span:nth-child(3)::before {
+  background-position: -199px -109px;
+}
+
+/* -------------------------网页新闻 ---------------------*/
+.news-topics {
+  height: 400px !important;
+}
+.news-topics ul li {
+  /* 宽度600px */
+  width:1000px;
+
+  /* 行高24px */
+  line-height:24px;
+}
+.news-topics ul li a, .news-topics ul li a:active {
+  /* 内边距5px */
+  padding:5px;
+
+  /* 文字颜色灰色 */
+  color:rgba(5, 4, 4, 0.658);
+
+  /* 去掉超链接下划线 */
+  text-decoration:none;
+
+  /* 让超链接以块级元素的形式显示，这一行非常重要 */
+  display:block;
+}
+.news-topics ul li a:hover {
+  /* 鼠标放上 */
+  color: rgb(204, 51, 51);
+}
+.news-topics ul li a span{
+  /* 让日期浮动到最右边，注意：span一定要在标题的左边，否则低版本IE不兼容 */
+  float:right;
+}
+
+.news-topics .news {
+  margin-left: 100px;
+}

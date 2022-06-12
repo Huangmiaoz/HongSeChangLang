@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../plugins/elementui/index.css">
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+
+<body>
+<!-- 网页头部模块 -->
+<div id="app">
+    <header>
+        <!-- 快捷菜单模块 -->
+        <div class="xtx-shortcut">
+            <nav class="container">
+                <ul class="fr">
+                    <li><a href="#">个人中心</a>|</li>
+                    <li><a href="#">帮助中心</a>|</li>
+                    <li><a href="#">在线客服</a>|</li>
+                    <li><a href="#" class="mobile">手机版</a></li>
+                    <li>|<a href="#" @click="userInfoDialogVisible = true"> 用户名：{{username}} </a></li>
+                    <li>|
+                        <a  v-if="userId" href="javascript:;" @click="logout"> 注销 </a>
+                        <a v-else href="login.html"> 登录 </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <!-- 主导航模块 -->
+        <div class="xtx-main-nav container">
+            <!-- 中间的导航 -->
+            <nav class="fl">
+                <ul>
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="redLongCorridor.html">红色长廊一览</a></li>
+                    <li><a href="question.html">趣味答题</a> </li>
+
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+    <div class="container">
+        <div>--</div>
+        <div >
+            <el-button size="mini" type="danger" @click="bigFontSize()">加大字体</el-button>
+            <!--        <el-button @click="big()">普通字体</el-button>-->
+            <el-button size="mini" type="danger" @click="smallFontSize()">缩小字体</el-button>
+        </div>
+
+
+        <div style="position: center;padding-left: 10%">
+            <h2 id="articleTitle" :style="{ fontSize: titleSize + 'px'}">{{articleTitle}}</h2>
+            <div id="articleInfo" :style="{ fontSize: infoSize + 'px'}">文章时间：{{createTime}} , 浏览次数：{{articleViewCount}}</div>
+        </div>
+
+        <article id="articleContent" style="width: 75%; position: center;padding-left: 10%">
+            <div :style="{ fontSize: contentSize + 'px'}">{{articleContent}}</div>
+        </article>
+
+        <el-dialog
+                title="当前登录用户信息"
+                :visible.sync="userInfoDialogVisible"
+                width="30%">
+            <span>用户id：{{userId}}</span>
+            <br><br>
+            <span>用户名：{{username}}</span>
+            <!--         <span>用户名：{{userLoginInfo.username}}</span>-->
+            <span slot="footer" class="dialog-footer">
+                <el-button type="primary" @click="userInfoDialogVisible = false">关闭</el-button>
+        </span>
+
+        </el-dialog>
+
+        <el-divider></el-divider>
+        <div  class="block" style="width: 75%">
+            <h2>评论区</h2>
+            <el-input
+                    type="textarea"
+                    :rows="2"
+                    placeholder="请输入评论内容"
+                    v-model="messageContent"
+                    maxlength="150"
+                    show-word-limit>
+            </el-input>
+            <el-button type="danger" @click="sendMsg">发送评论</el-button>
+            <el-divider content-position="right">查看评论</el-divider>
+
+            <el-timeline v-for="item in messageList" :key="item.msgId">
+                <el-timeline-item :timestamp= "item.createTime" placement="top">
+                    <el-card>
+                        <P>用户名：{{item.userName}} - {{item.userId}}</P>
+                        <h3>{{item.content}}</h3>
+                    </el-card>
+                </el-timeline-item>
+            </el-timeline>
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- 网页底部模块 -->
+    <footer>
+    <!-- 版权信息 -->
+    <section class="xtx-copyright">
+        <p>CopyRight @ 网络201 黄颖瑜</p>
+    </section>
+</footer>
+</body>
+<!-- 引入组件库 -->
+<script src="../js/vue.js"></script>
+<script src="../plugins/elementui/index.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<style>
+    .block{
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-0%);
+    }
+
+</style>
+<script>
+
+    this.axios.defaults.baseUrl = 'http://localhost:8082'
+    var app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                userLoginInfo: {
+                    userId: null,
+                    username: null,
+                },
+                articleTitle: null,
+                articleContent: null,
+                createTime: null,
+                articleType: null,
+                articleViewCount: null,
+                titleSize : "24",
+                infoSize : "18.72",
+                contentSize : "16",
+                userInfoDialogVisible :false,
+                messageList: [],
+                messageContent: null,
+                articleId : 1
+            }
+        },
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+            this.userId = sessionStorage.getItem("userId");
+            this.username = sessionStorage.getItem("username");
+            if(!this.userId) {
+                this.username = '未登录';
+            }
+            //调用查询全部数据的操作
+            this.articleDetail();
+            this.getMessageByArticleId();
+
+        },
+        methods: {
+            getMessageByArticleId(){
+                axios.get("http://localhost:8082/message/" + this.articleId ).then((res) =>{
+                    console.log(res);
+                    if(res.data.code == 200) {
+                        this.messageList = res.data.data;
+                    } else {
+                        this.$message.error(res.data.msg);
+                    }
+                });
+            },
+            sendMsg() {
+                if(this.userId == null) {
+                    this.$message.error("请用户先登录后，再发评论！");
+                }else {
+                    axios.post("http://localhost:8082/message/create",{
+                        "articleId": 1,
+                        "userId": this.userId,
+                        "userName": this.username,
+                        "content": this.messageContent,
+                    }).then(res => {
+                        console.log(res);
+                        if(res.data.code == 200) {
+                            this.messageContent = null;
+                            this.$message.success(res.data.msg);
+                            // this.reload();
+                            window.location.reload();
+                        } else {
+                            this.$message.error(res.data.msg);
+                        }
+                    }).error(err => {
+                        this.$message.error(err.data.msg);
+                    });
+                }
+            },
+
+
+            logout() {
+                console.log("www");
+                this.userId = null;
+                this.username = "未登录";
+                sessionStorage.removeItem("userId");
+                sessionStorage.removeItem("username");
+            },
+            articleDetail(){
+                console.log("get by articleId");
+                 var path = window.location.href.toString();
+                 var split = path.split("/");
+                 var articleId = split[split.length - 1];
+                console.log(articleId);
+                articleId = 1
+                 axios.get("http://localhost:8082/article/" + this.articleId).then(res =>{
+                     console.log(res);
+                    this.articleTitle = res.data.data.articleTitle;
+                    this.articleContent = res.data.data.articleContent;
+                    this.createTime = res.data.data.createTime;
+                    this.articleViewCount = res.data.data.articleViewCount;
+                    if(this.articleViewCount == null || this.articleViewCount == 0){
+                        this.articleViewCount = 1;
+                    }
+                });
+            },
+            bigFontSize(){
+                console.log("bigger");
+                this.titleSize++;
+                this.infoSize++;
+                this.contentSize ++;
+            },
+            smallFontSize() {
+                console.log("smaller");
+                this.titleSize--;
+                this.infoSize--;
+                this.contentSize--;
+            },
+
+        }
+    });
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>md - Title</title>
+</head>
+<body>
+<link rel="stylesheet" href="../plugins/editor.md-master/css/editormd.css" />
+
+<div id="my-editormd">
+    <textarea id="my-editormd-markdown-doc">
+    </textarea>
+</div>
+
+</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../plugins/editor.md-master/editormd.min.js"></script>
+<script >
+    $(function() {
+        editormd("my-editormd", {//注意1：这里的就是上面的DIV的id属性值
+            width   : "90%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "../plugins/editor.md-master/lib/",//注意2：你的路径
+            saveHTMLToTextarea : true//注意3：这个配置，方便post提交表单
+        });
+    });
+</script>
+</html>
